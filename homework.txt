@@ -1,0 +1,2 @@
+leetcode 1207 -unique number of occurences
+leetcode 442 -find all duplicates in an array

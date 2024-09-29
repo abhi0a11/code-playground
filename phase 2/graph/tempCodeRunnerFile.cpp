@@ -1,0 +1,2 @@
+ = !upTOdowm;
+        rowSize--;

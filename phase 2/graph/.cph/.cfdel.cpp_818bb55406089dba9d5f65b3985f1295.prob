@@ -1,0 +1,1 @@
+{"name":"Local: cfdel","url":"d:\\Code Playground\\data structures #lovebabbar\\phase 2\\graph\\cfdel.cpp","tests":[{"id":1714402124700,"input":"3\n5\n3 1 2 5 4\n4\n2 3 4 1\n2\n2 1","output":"2\n3\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code Playground\\data structures #lovebabbar\\phase 2\\graph\\cfdel.cpp","group":"local","local":true}

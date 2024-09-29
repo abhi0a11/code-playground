@@ -1,0 +1,1 @@
+sum - 2 * max(pick, notPick)

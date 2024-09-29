@@ -1,0 +1,1 @@
+{"name":"Local: lift","url":"d:\\Code Playground\\data structures\\phase 2\\lift.cpp","tests":[{"id":1723792877413,"input":"3\n3 2 1\n1 9 10","output":"8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code Playground\\data structures\\phase 2\\lift.cpp","group":"local","local":true}
