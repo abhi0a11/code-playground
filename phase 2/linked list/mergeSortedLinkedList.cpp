@@ -1,5 +1,3 @@
-
-#include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
 class node
@@ -7,7 +5,7 @@ class node
 
 public:
     int data;
-    node *next;
+    node* next;
 
     // constructor
     node(int data)
@@ -27,9 +25,9 @@ public:
     }
 };
 
-void insertAtTail(node *&head, node *&tail, int d)
+void insertAtTail(node*& head, node*& tail, int d)
 {
-    node *temp = new node(d);
+    node* temp = new node(d);
 
     if (tail == NULL)
     {
@@ -42,9 +40,9 @@ void insertAtTail(node *&head, node *&tail, int d)
     tail = temp;
 }
 
-void print(node *&head)
+void print(node*& head)
 {
-    node *temp = head;
+    node* temp = head;
 
     while (temp != NULL)
     {
@@ -56,26 +54,26 @@ void print(node *&head)
 
 // question - Sort 0s,1sand 2s
 
-void insertAtTail(node *&tail, node *curr)
+void insertAtTail(node*& tail, node* curr)
 {
     tail->next = curr;
     tail = curr;
 }
 
-void sortLinkedList(node *&head)
+void sortLinkedList(node*& head)
 {
 
     // method 1
 
-    node *zeroHead = new node(-1);
-    node *zeroTail = zeroHead;
-    node *oneHead = new node(-1);
-    node *oneTail = oneHead;
-    node *twoHead = new node(-1);
-    node *twoTail = twoHead;
+    node* zeroHead = new node(-1);
+    node* zeroTail = zeroHead;
+    node* oneHead = new node(-1);
+    node* oneTail = oneHead;
+    node* twoHead = new node(-1);
+    node* twoTail = twoHead;
 
     // create sublist of 0s,1s and 2s
-    node *curr = head;
+    node* curr = head;
     while (curr != NULL)
     {
         int value = curr->data;
@@ -168,7 +166,7 @@ void sortLinkedList(node *&head)
 
 // ques - merge two sorted linked list
 
-node *solve(node *first, node *second)
+node* solve(node* first, node* second)
 {
 
     // if only one element in first list
@@ -177,11 +175,11 @@ node *solve(node *first, node *second)
         first->next = second;
         return first;
     }
-    node *curr1 = first;
-    node *next1 = curr1->next;
+    node* curr1 = first;
+    node* next1 = curr1->next;
 
-    node *curr2 = second;
-    node *next2 = curr2->next;
+    node* curr2 = second;
+    node* next2 = curr2->next;
 
     while (next1 != NULL && curr2 != NULL)
     {
@@ -212,7 +210,7 @@ node *solve(node *first, node *second)
 
     return first;
 }
-node *merge(node *first, node *second)
+node* merge(node* first, node* second)
 {
     if (first == NULL)
     {
@@ -235,8 +233,8 @@ node *merge(node *first, node *second)
 
 int main()
 {
-    node *head = NULL;
-    node *tail = NULL;
+    node* head = NULL;
+    node* tail = NULL;
 
     insertAtTail(head, tail, 1);
     insertAtTail(head, tail, 0);

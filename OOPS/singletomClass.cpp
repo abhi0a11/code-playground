@@ -38,11 +38,9 @@ public:
 SingleTon* SingleTon::instance = nullptr;
 mutex SingleTon::mtx;
 
-
 int main() {
     // getInstance() => request's instance from the class if it exist otherwise create the instance.
     SingleTon* s1 = SingleTon::getInstance();
-
 
     return 0;
 }

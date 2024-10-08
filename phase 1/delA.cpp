@@ -68,43 +68,81 @@
 
 #include<bits/stdc++.h>
 using namespace std;
-int solve(vector<vector<int>>& nums) {
-    int n = nums.size();
-    int m = nums[0].size();
-
-    int ans = 0;
-    vector<vector<int>> maxi(n, vector<int>(m, 0));
-
-    for (int j = 0; j < m; j++) {
-        for (int i = n - 1; i >= 0; i--) {
-            if (i == n - 1) {
-                maxi[i][j] = nums[i][j];
-            }
-            else
-                maxi[i][j] = max(maxi[i + 1][j], nums[i + 1][j]);
-        }
-    }
+#define ll long long
+vector<string> solve(int n, vector<vector<string>>& Messages) {
+    map<ll, string> mp;
+    vector<string> ans;
     for (int i = 0; i < n; i++) {
-        for (int j = m - 1; j >= 0; j--) {
-            if (j == m - 1) {
-                maxi[i][j] = max(maxi[i][j], nums[i][j]);
+        ll ind = stoll(Messages[i][0]);
+        string ch = Messages[i][1];
+
+        mp[ind] = ch;
+        ll idx = ind;
+        bool left = 0, right = 0;
+        string l = "", r = "";
+
+
+        if (ch != "*") {
+            while (mp.find(idx - 1) != mp.end()) {
+                if (mp[idx - 1] == "*") {
+                    left = 1;
+                    break;
+                }
+                l = mp[idx - 1] + l;
+                idx--;
             }
-            else
-                maxi[i][j] = max(maxi[i][j + 1], nums[i][j]);
-        }
-    }
+            idx = ind;
+            while (mp.find(idx + 1) != mp.end()) {
+                if (mp[idx + 1] == "*") {
+                    right = 1;
+                    break;
+                }
+                r += mp[idx + 1];
+                idx--;
+            }
 
-    int maxiAns = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            maxiAns = max(maxi[i][j] - nums[i][j], maxiAns);
+            if (left && right) {
+                ans.push_back(l + mp[ind] + r);
+            }
         }
-    }
+        else {
+            idx = ind - 1;
+            if (mp.find(idx) != mp.end() && mp[idx] != "*") {
+                l = mp[idx] + l;
+                while (mp.find(idx - 1) != mp.end()) {
+                    if (mp[idx - 1] == "*") {
+                        left = 1;
+                        break;
+                    }
+                    l = mp[idx - 1] + l;
+                    idx--;
+                }
+                if (left)    ans.push_back(l);
+            }
+            idx = ind + 1;
+            if (mp.find(idx) != mp.end() && mp[idx] != "*") {
+                r += mp[idx];
+                while (mp.find(idx + 1) != mp.end()) {
+                    if (mp[idx + 1] == "*") {
+                        right = 1;
+                        break;
+                    }
+                    r += mp[idx + 1];
+                    idx++;
+                }
 
-    return maxiAns;
+                if (right)    ans.push_back(r);
+            }
+
+        }
+
+    }
+    return ans;
 }
 int main() {
-    vector<vector<int>> nums = { {1,2,13,0},{15,26,7,48},{99,86,11,12},{92,89,0,99} };
-    cout << solve(nums);
+    while (1) { cout << "chinti bahar nikal"; };
+
+    // vector<vector<int>> nums = { {1,2,13,0},{15,26,7,48},{99,86,11,12},{92,89,0,99} };
+    // cout << solve(nums);
     return 0;
 }

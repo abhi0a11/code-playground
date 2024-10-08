@@ -1,37 +1,31 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-
-int solve(vector<int>& arr, int k)
-{
-    vector<int> lis;
-    vector<int> cnt(arr.size() + 1);
+int countLIS(vector<int>& arr) {
     int n = arr.size();
+    vector<int> cnt(n + 1);
+
+    int prev = -1;
+    vector<int> lis;
     cnt[0] = 1;
     for (int i = 0; i < n; i++) {
-        if (lis.empty() || arr[i] > lis.back()) {
+        if (lis.empty() || lis.back() < arr[i]) {
             lis.push_back(arr[i]);
             cnt[lis.size()] = cnt[lis.size() - 1];
         }
         else {
             int ind = lower_bound(lis.begin(), lis.end(), arr[i]) - lis.begin();
-            if (ind < lis.size())   lis[ind] = arr[i];
-            cnt[lis.size()]++;
+            if (ind < lis.size()) {
+                lis[ind] = arr[i];
+                cnt[lis.size()]++;
+            }
         }
+
     }
 
     return cnt[lis.size()];
 }
-
 int main() {
-    int n, k;
-    cin >> n;
-
-
-
-
-    vector<int> v(n);
-    for (auto& i : v)  cin >> i;
-    cin >> k;
-    cout << solve(v, k);
+    vector<int> arr{ 2,4,7,6,5,8 };
+    cout << countLIS(arr);
+    return 0;
 }
