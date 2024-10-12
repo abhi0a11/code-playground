@@ -1,7 +1,11 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
+
 // taking space of O(N)
+// taking complexity: O(Nlog(N))
+
+int inv_count = 0;
 void merge(int arr[], int s, int e)
 {
     int mid = s + (e - s) / 2;
@@ -31,14 +35,14 @@ void merge(int arr[], int s, int e)
 
     while (index1 < len1 && index2 < len2)
     {
-        if (first[index1] < second[index2])
+        if (first[index1] <= second[index2])
         {
             arr[mainArrayIndex++] = first[index1++];
         }
         else
         {
             arr[mainArrayIndex++] = second[index2++];
-            // count++ //inversion counter
+            inv_count += len1 - index1; //inversion counter
         }
     }
 
@@ -74,6 +78,7 @@ void mergeSort(int arr[], int s, int e)
     merge(arr, s, e);
 }
 
+
 /*
 void merge(vector<int>& arr, int s, int mid, int e){
     vector<int> temp;
@@ -82,7 +87,7 @@ void merge(vector<int>& arr, int s, int mid, int e){
     int right = mid+1;
 
     while(left <= mid && right <= e){
-        if(arr[left] < arr[right]){
+        if(arr[left] <= arr[right]){
             temp.push_back(arr[left]);
             left++;
         }
@@ -119,27 +124,27 @@ void mergeSort(vector<int>& arr, int n){
 */
 
 // in-place merge sort
+// time complexity O(n (log(n)^2)
 /*
-void merge(int arr[],int s,int e,int& count){
-    int mid = s + (e-s)/2;
+void merge(int arr[], int s, int e, int& count) {
+    int mid = s + (e - s) / 2;
 
     int left = s;
-    int right = mid+1;
+    int right = mid + 1;
 
-    if(arr[mid] <= arr[right]){
+    if (arr[mid] <= arr[right]) {
         return;
     }
 
-    while(left <= mid && right <= e){
-        if(arr[left] <= arr[right])   left++;
-
-        else{
+    while (left <= mid && right <= e) {
+        if (arr[left] <= arr[right])   left++;
+        else {
             int val = arr[right];
             int index = right;
 
-            while( index != left)  {
+            while (index != left) {
                 count++;
-                arr[index] = arr[index-1];
+                arr[index] = arr[index - 1];
                 index--;
             }
 
@@ -152,23 +157,23 @@ void merge(int arr[],int s,int e,int& count){
 
 }
 
-void mergeSort(int arr[], int s,int e,int& count){
+void mergeSort(int arr[], int s, int e, int& count) {
 
-    if(s>=e)    return;
+    if (s >= e)    return;
 
-    int mid = s + (e-s)/2;
-    mergeSort(arr,s,mid,count);
-    mergeSort(arr,mid+1,e,count);
-    merge(arr,s,e,count);
+    int mid = s + (e - s) / 2;
+    mergeSort(arr, s, mid, count);
+    mergeSort(arr, mid + 1, e, count);
+    merge(arr, s, e, count);
 }
 */
 int main()
 {
-    int arr[5] = { 2, 5, 1, 6, 9 };
+    int arr[5] = { 2, 4, 1, 3, 5 };
     int n = 5;
 
     mergeSort(arr, 0, n - 1);
-
+    cout << "Inversion count: " << inv_count << endl;
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";

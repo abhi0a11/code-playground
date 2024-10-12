@@ -1,30 +1,29 @@
-#include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
 
-int partition (vector<int>& arr, int low, int high)
+int partition(vector<int>& arr, int low, int high)
 {
     int pivot = arr[low];
 
     int left = low, right = high;
-    while(left < right){
-        while( left <= high && pivot >= arr[left])   left++;
-        while(right >= low && pivot < arr[right])  right--;
-        
-        if(left < right)    swap(arr[left] , arr[right]);
+    while (left < right) {
+        while (left <= high && pivot >= arr[left])   left++;
+        while (right >= low && pivot < arr[right])  right--;
+
+        if (left < right)    swap(arr[left], arr[right]);
     }
-    swap(arr[low] , arr[right]);
-    
+    swap(arr[low], arr[right]);
+
     return right;
 }
 void quickSort(vector<int>& arr, int low, int high)
 {
-    if(low > high) return;
+    if (low > high) return;
 
-    int pivot = partition(arr,low,high);
-    
-    quickSort(arr,low,pivot-1);
-    quickSort(arr,pivot+1,high);
+    int pivot = partition(arr, low, high);
+
+    quickSort(arr, low, pivot - 1);
+    quickSort(arr, pivot + 1, high);
 }
 /*
 int partition(int arr[], int s, int e)
@@ -87,8 +86,8 @@ void quickSort(int arr[], int s, int e)
 */
 int main()
 {
-    int arr[5] = {2, 4, 1, 6, 9};
-    vector<int> sort =  {2, 4, 1, 6, 9};
+    int arr[5] = { 2, 4, 1, 6, 9 };
+    vector<int> sort = { 2, 4, 1, 6, 9 };
     int n = 5;
 
     quickSort(sort, 0, n - 1);

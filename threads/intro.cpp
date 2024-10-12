@@ -10,6 +10,7 @@ void taskA() {
         fflush(stdout);
     }
 }
+
 void taskB() {
     for (int i = 0; i < 7; i++) {
         sleep(1);
