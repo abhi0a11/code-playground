@@ -1,0 +1,1 @@
+{"name":"Local: aggressiveCows","url":"d:\\Code Playground\\data structures\\samsung\\aggressiveCows.cpp","tests":[{"id":1730804040847,"input":"5 3\n1 3 5 8 10","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code Playground\\data structures\\samsung\\aggressiveCows.cpp","group":"local","local":true}

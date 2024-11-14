@@ -1,55 +1,57 @@
-struct Node{
+#include<bits/stdc++.h>
+using namespace std;
+struct Node {
     Node* links[26];
     bool flag = false;
     int count = 0;
 
-    bool containsKey(char ch){
-        return links[ch-'a'] != NULL;
+    bool containsKey(char ch) {
+        return links[ch - 'a'] != NULL;
     }
-    void put(char ch, Node* node){
-        links[ch-'a'] = node;
+    void put(char ch, Node* node) {
+        links[ch - 'a'] = node;
     }
-    void setEnd(){
+    void setEnd() {
         flag = true;
     }
-    Node* get(char ch){
-        return links[ch-'a'];
+    Node* get(char ch) {
+        return links[ch - 'a'];
     }
-    bool isEnd(){
+    bool isEnd() {
         return flag;
     }
-    int getCount(){
+    int getCount() {
         return count;
     }
-    void incr(){
+    void incr() {
         count++;
     }
 };
-class Trie{
+class Trie {
     Node* root;
 public:
-    Trie(){
+    Trie() {
         root = new Node();
     }
-    void build(string& s){
+    void build(string& s) {
         Node* node = root;
-        for(auto ch:s){
-            if(!node->containsKey(ch)){
-                node -> put(ch,new Node());
+        for (auto ch : s) {
+            if (!node->containsKey(ch)) {
+                node->put(ch, new Node());
             }
             node = node->get(ch);
-            node ->incr();
+            node->incr();
         }
         node->setEnd();
     }
 
-    string getPref(string& s, int n){
+    string getPref(string& s, int n) {
         string ans = "";
         Node* node = root;
-        for(auto ch:s){
+        for (auto ch : s) {
             node = node->get(ch);
-            
-            if(node->getCount() == n){
+
+            if (node->getCount() == n) {
                 ans += ch;
             }
             else break;
@@ -57,11 +59,8 @@ public:
         return ans;
     }
 };
-class Solution {
-public:
-    string longestCommonPrefix(vector<string>& strs) {
-        Trie trie;
-        for(auto word:strs) trie.build(word);
-        return trie.getPref(strs[0],strs.size());
-    }
-};
+
+int main() {
+
+    return 0;
+}

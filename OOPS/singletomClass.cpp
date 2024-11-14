@@ -7,10 +7,7 @@ private:
     static mutex mtx;
     // private constructor so that object cannot be created outside the class
     SingleTon() {}
-
-
 public:
-
     SingleTon(SingleTon& obj) = delete;
     void operator=(const SingleTon&) = delete;
 

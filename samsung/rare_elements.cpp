@@ -64,10 +64,8 @@ int main() {
                         }
                     }
 
-                    if (chk) {
-                        for (int k = 0; k < q; k++) {
-                            maxi = max(maxi, dist[rare[k].first][rare[k].second]);
-                        }
+                    if (!chk) {
+                        ans = -1;
                     }
                     ans = min(ans, maxi);
                 }
